@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+// const removedItemFromArray = (arr) => {
+//   arr.splice(1, 1);
+//   return arr;
+// };
+
+// const oneArray = [56, 72, 65];
+// const newArray = removedItemFromArray(oneArray);
+// console.log(newArray);
+
+///////////////////////////////////////------------------------------------------------/////////////////
+//     var idea={
+//         name:"sri",
+//         age:22,
+//         email:"abcd@",
+//         info:{
+//             city:"chennai"
+//         }
+//     };
+//     var ideas={
+//     city:"minjur"
+// }
+// idea.info.city = ideas.city;
+// console.log(idea)
+
+//////////////////////////////////////////////////-------------------------------------------///////////
+
+var int = (num) => {
+  var int = []
+  for (var score of num) {
+    int.push(...score)
+  }
+  return [int]
+}
+
+var output = [[10, 20, 30], [40, 50], [60, 70, 80], [90, 100]]
+var Result = int(output)
+console.log(Result)
+    </script>
+</body>
+</html>

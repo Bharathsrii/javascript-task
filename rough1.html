@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add your CSS styles here */
+        /* ... (your existing CSS) ... */
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            width: 60%;
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <!-- ... (your header content) ... -->
+    </header>
+
+    <main>
+        <section id="books">
+            <!-- Display your books here -->
+        </section>
+
+        <section id="cart">
+            <h2>Shopping Cart</h2>
+            <ul id="cart-items">
+                <!-- Shopping cart items will be displayed here -->
+            </ul>
+            <button onclick="checkout()">Checkout</button>
+        </section>
+    </main>
+
+    <!-- Modal for displaying book details -->
+    <div id="bookModal" class="modal">
+        <div class="modal-content" id="bookDetails">
+            <!-- Book details will be displayed here -->
+            <button onclick="closeModal()">Close</button>
+        </div>
+    </div>
+
+    <footer>
+        <!-- ... (your footer content) ... -->
+    </footer>
+
+    <script src="script.js">
+        // Your JavaScript code goes here
+        // Sample book data
+const books = [
+    { id: 1, title: 'Book 1', author: 'Author 1', price: 10.99 },
+    { id: 2, title: 'Book 2', author: 'Author 2', price: 12.99 },
+    // Add more book data here
+];
+
+// Shopping cart data
+const cart = [];
+
+// Function to display a list of books
+function displayBooks() {
+    const booksContainer = document.getElementById('books');
+    booksContainer.innerHTML = ''; // Clear the container
+
+    books.forEach(book => {
+        const bookElement = document.createElement('div');
+        bookElement.classList.add('book');
+        bookElement.innerHTML = `
+            <h2>${book.title}</h2>
+            <p>Author: ${book.author}</p>
+            <p>Price: $${book.price}</p>
+            <button onclick="addToCart(${book.id})">Add to Cart</button>
+            <button onclick="showBookDetails(${book.id})">Details</button>
+        `;
+        booksContainer.appendChild(bookElement);
+    });
+}
+
+// Function to add a book to the shopping cart
+function addToCart(bookId) {
+    const book = books.find(book => book.id === bookId);
+    if (book) {
+        cart.push(book);
+        updateCartDisplay();
+    }
+}
+
+// Function to update the shopping cart display
+function updateCartDisplay() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    cartItemsContainer.innerHTML = '';
+
+    cart.forEach(book => {
+        const cartItem = document.createElement('li');
+        cartItem.innerText = `${book.title} - $${book.price}`;
+        cartItemsContainer.appendChild(cartItem);
+    });
+}
+
+// Function to handle the checkout process
+function checkout() {
+    // Implement checkout functionality here
+}
+
+// Function to display book details in a modal
+function showBookDetails(bookId) {
+    const book = books.find(book => book.id === bookId);
+    if (book) {
+        const bookDetails = document.getElementById('bookDetails');
+        bookDetails.innerHTML = `
+            <h2>${book.title}</h2>
+            <p>Author: ${book.author}</p>
+            <p>Price: $${book.price}</p>
+            <!-- Add more book details here -->
+        `;
+        const modal = document.getElementById('bookModal');
+        modal.style.display = 'block';
+    }
+}
+
+// Function to close the modal
+function closeModal() {
+    const modal = document.getElementById('bookModal');
+    modal.style.display = 'none';
+}
+
+// Call the initial function to display books when the page loads
+window.onload = displayBooks;
+    </script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+       body, tr, td {
+            background-color: white;
+            color: black;
+            font-size: medium;
+            background-image: url(https://ideausher.com/wp-content/uploads/2021/03/Instagram-Post-%E2%80%93-2-1.png);
+    
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">TICKET BOOKING</h1>
+        <form id="ticket">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="fname">First Name:</label>
+                        <input type="text" class="form-control" id="fname" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="lname">Last Name:</label>
+                        <input type="text" class="form-control" id="lname" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" class="form-control" id="email" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="mobile">Mobile No:</label>
+                        <input type="tel" class="form-control" id="mobile" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="pickup">Pickup:</label>
+                        <input type="text" class="form-control" id="pickup" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="Drop">Drop:</label>
+                        <input type="text" class="form-control" id="drop" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="people">No Of People</label>
+                        <input type="number" class="form-control" id="people" required>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-primary" onclick="saveData()">Save</button>
+        </form>
+        <h2 class="mt-4">Stored User Data</h2>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Mobile No</th>
+                    <th>Pickup</th>
+                    <th>Drop</th>
+                    <th>No of People</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="userData">
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function saveData() {
+            const fname = document.getElementById("fname").value;
+            const lname = document.getElementById("lname").value;
+            const email = document.getElementById("email").value;
+            const mobile = document.getElementById("mobile").value;
+            const pickup = document.getElementById("pickup").value;
+            const drop = document.getElementById("drop").value;
+            const people = document.getElementById("people").value;
+            const ticketData = {
+                fname,
+                lname,
+                email,
+                mobile,
+                pickup,
+                drop,
+                people
+            };
+
+            const existingData = JSON.parse(localStorage.getItem("ticketData")) || [];
+
+            existingData.push(ticketData);
+
+            localStorage.setItem("ticketData", JSON.stringify(existingData));
+
+            document.getElementById("ticket").reset();
+
+            displayUserData();
+        }
+
+        function displayUserData() {
+            const userData = JSON.parse(localStorage.getItem("ticketData")) || [];
+            const tableBody = document.getElementById("userData");
+            tableBody.innerHTML = '';
+
+            userData.forEach((user, index) => {
+                const row = tableBody.insertRow();
+                const cellfname = row.insertCell(0);
+                const celllname = row.insertCell(1);
+                const cellemail = row.insertCell(2);
+                const cellmobile = row.insertCell(3);
+                const cellpickup = row.insertCell(4);
+               const celldrop = row.insertCell(5);
+               const cellpeople = row.insertCell(6);
+                const cellActions = row.insertCell(7);
+
+                cellfname.innerHTML = user.fname;
+                celllname.innerHTML = user.lname;
+                cellemail.innerHTML = user.email;
+                cellmobile.innerHTML = user.mobile;
+                cellpickup.innerHTML = user.pickup;
+                celldrop.innerHTML = user.drop;
+                cellpeople.innerHTML = user.people;
+
+                const editButton = document.createElement("button");
+                editButton.textContent = "Edit";
+                editButton.onclick = () => editUser(index);
+
+                const deleteButton = document.createElement("button");
+                deleteButton.textContent = "Delete";
+                deleteButton.onclick = () => deleteUser(index);
+
+                cellActions.appendChild(editButton);
+                cellActions.appendChild(deleteButton);
+            });
+        }
+
+        function editUser(index) {
+            const userData = JSON.parse(localStorage.getItem("ticketData")) || [];
+            const editedUser = userData[index];
+
+            document.getElementById("fname").value = editedUser.fname;
+            document.getElementById("lname").value = editedUser.lname;
+            document.getElementById("email").value = editedUser.email;
+            document.getElementById("mobile").value = editedUser.mobile;
+            document.getElementById("pickup").value = editedUser.pickup;
+            document.getElementById("drop").value = editedUser.drop;
+            document.getElementById("people").value = editedUser.people;
+
+            userData.splice(index, 1);
+
+            localStorage.setItem("ticketData", JSON.stringify(userData));
+
+            displayUserData();
+        }
+
+        function deleteUser(index) {
+            const userData = JSON.parse(localStorage.getItem("ticketData")) || [];
+
+            userData.splice(index, 1);
+
+            localStorage.setItem("ticketData", JSON.stringify(userData));
+
+            displayUserData();
+        }
+
+        displayUserData();
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

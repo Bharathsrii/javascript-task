@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="number" id="data">
+    <button onclick="key()">Add</button>
+    <select id="selectBox" onchange="boat()">Drop</select>
+    <select id="optional"></select>
+    <script>
+    function key() {
+        var gdata = document.getElementById("data").value;
+
+        var displayoutput = '<option>drop</option>';
+
+        for (var i = 0; i <= gdata; i++) {
+            displayoutput += '<option value="' + i + '">' + i + '</option>';
+        }
+
+        document.getElementById("selectBox").innerHTML = displayoutput;
+    }
+
+    function boat() {
+        var adata = document.getElementById("selectBox").value;
+        var displayoutput = '<option>select option</option>';
+        for (var i = 0; i <= adata; i++) {
+            displayoutput += '<option value="' + i + '">' + i + '</option>';
+        }
+        document.getElementById("optional").innerHTML = displayoutput;
+    }
+
+    </script>
+    
+
+</body>
+
+</html>

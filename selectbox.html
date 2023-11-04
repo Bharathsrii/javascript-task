@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="getdata">
+    <button onclick="Button()">Add</button>
+    <select id="selectBox">Drop</select>
+
+    <script>
+       function Button(){
+        
+        var data=document.getElementById("getdata").value
+        
+        var displayoutput='<option>drop</option>'
+       
+        for(i=0;i<=data;i++){
+            displayoutput+='<option value="'+i+'">'+i+'</option>'
+        }
+       
+       document.getElementById("selectBox").innerHTML=displayoutput
+    }
+    </script>
+</body>
+</html>

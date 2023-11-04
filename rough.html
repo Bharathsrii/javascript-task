@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookstore</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add your CSS styles here */
+body {
+    font-family: Arial, sans-serif;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+main {
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Our Bookstore</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Books</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="books">
+            <!-- Display your books here -->
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Bookstore. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js">
+        // Sample book data
+const books = [
+    { id: 1, title: 'Book 1', author: 'Author 1', price: 10.99 },
+    { id: 2, title: 'Book 2', author: 'Author 2', price: 12.99 },
+    // Add more book data here
+];
+
+// Function to display a list of books
+function displayBooks() {
+    const booksContainer = document.getElementById('books');
+    booksContainer.innerHTML = ''; // Clear the container
+
+    books.forEach(book => {
+        const bookElement = document.createElement('div');
+        bookElement.classList.add('book');
+        bookElement.innerHTML = `
+            <h2>${book.title}</h2>
+            <p>Author: ${book.author}</p>
+            <p>Price: $${book.price}</p>
+            <button onclick="addToCart(${book.id})">Add to Cart</button>
+        `;
+        booksContainer.appendChild(bookElement);
+    });
+}
+
+// Function to add a book to the shopping cart
+function addToCart(bookId) {
+    // Implement shopping cart functionality here
+}
+
+// Function to display the shopping cart
+function displayCart() {
+    // Implement shopping cart display here
+}
+
+// Function to handle the checkout process
+function checkout() {
+    // Implement checkout functionality here
+}
+
+// Call the initial function to display books when the page loads
+window.onload = displayBooks;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <div id="main">
+        <div id="head">CHIYANA</div>
+        <div id="word">VIKRAM, The Chiyan......!!</div>
+    </div> -->
+    <button type="button" onclick="createDiv()">create</button>
+    <script>
+        function createDiv() {
+
+            var divElement = document.createElement('Div');
+            var textNode = document.createTextNode('Login Page');
+            var inputElement = document.createElement('input');
+            inputElement.type = 'text';
+            var buttonElement = document.createElement('button');
+            var buttonText = document.createTextNode('Click');
+            buttonElement.appendChild(buttonText);
+            divElement.appendChild(textNode);
+            divElement.appendChild(inputElement);
+            divElement.appendChild(buttonElement);
+            document.body.appendChild(divElement);
+            box.appendChild(word);
+            document.body.appendChild(box);
+        
+        }
+    </script>
+</body>
+
+</html>

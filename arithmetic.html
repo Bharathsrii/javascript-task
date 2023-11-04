@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label >Enter the value</label>
+    <input type="number" id="text1">
+    <label >Enter the value</label>
+    <input type="number" id="text2">
+    <button onclick="operation()">TOTAL</button>
+    <h3>Results:</h3>
+    <p id="additionResult"></p>
+    <p id="multiResult"></p>
+    <p id="divisionResult"></p>
+    <p id="subResult"></p>
+    <p id="modulusResult"></p>
+   <script>
+       function operation()
+       {
+           var num1 = parseFloat(document.getElementById("text1").value);
+           var num2 = parseFloat(document.getElementById("text2").value);
+           var addition = num1 + num2;
+           var multi = num1 * num2;
+           var div=num1 / num2;
+           var sub = num1 - num2;
+           var Modulus = num1 % num2;
+           document.getElementById("additionResult").innerHTML = "Addition: " + addition;
+           document.getElementById("multiResult").innerHTML = "multiplication: " + multi;
+           document.getElementById("divisionResult").innerHTML = "Division: " + div;
+           document.getElementById("subResult").innerHTML = "Substraction: " + sub;
+           document.getElementById("modulusResult").innerHTML = "Modulus: " + Modulus;
+       }
+   </script>
+</body>
+</html>
