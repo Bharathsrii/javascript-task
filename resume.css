@@ -1,0 +1,72 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Set a background color */
+  body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Style the header section */
+  .intro {
+    text-align: center;
+    margin: 20px 0;
+  }
+  
+  .intro h1 {
+    font-size: 32px;
+    color: #333;
+  }
+  
+  .intro p {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  /* Style the container */
+  .container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgb(21, 0, 0);
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  /* Style form elements */
+  .input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Style icons */
+  .icon {
+    font-size: 18px;
+    margin-right: 5px;
+  }
+  
+  /* Style buttons */
+  button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  /* Style the footer */
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Add more specific styles for different sections as needed */
+  
